@@ -6,7 +6,7 @@ function votedate (rawvote: number) {
 
 function checkvoted (a:number){
     let b = 0 
-    for(let i= 0; i<votemenber.length;i++){
+    /*for(let i= 0; i<votemenber.length;i++){
         if(votemenber[i]==a){
             b++
         }
@@ -14,7 +14,8 @@ function checkvoted (a:number){
     if(b==0){
         votemenber.push(a)
         votelist[rastvote]++
-    }
+    } */
+    votelist[rastvote]++
 }
 input.onButtonPressed(Button.B, function () {
     if (cmode) {
@@ -25,7 +26,7 @@ input.onButtonPressed(Button.B, function () {
 radio.onReceivedNumber(function (name) {
     if (mode == 1) {
         checkvoted(radio.receivedPacket(RadioPacketProperty.SerialNumber))
-        rastvote = name   
+        rastvote = name-10  
     }
 })
 let i = 0
@@ -42,7 +43,6 @@ let votenom = ["A","B","C","D","E"]
 let votemenber = [0]
 // 桁数の送信
 while (mode == 0) {
-    i = 2
     if (input.buttonIsPressed(Button.A)) {
         a += 1
     }
